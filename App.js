@@ -14,6 +14,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -26,6 +27,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import SplashScreen from 'react-native-splash-screen'
+import { GoogleSignin, statusCodes,GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -61,39 +63,55 @@ const App: () => Node = () => {
   };
 useEffect(()=>{
   SplashScreen.hide();
+  GoogleSignin.configure()
 },[])
+
+// Somewhere in your code
+const googleLogin = async () => {
+  try {
+    await GoogleSignin.hasPlayServices();
+    const userInfo = await GoogleSignin.signIn();
+    console.log("user info",userInfo);
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      // user cancelled the login flow
+      console.log(error);
+    } else if (error.code === statusCodes.IN_PROGRESS) {
+      // operation (e.g. sign in) is in progress already
+      console.log(error);      
+    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      // play services not available or outdated
+      console.log(error);
+    } else {
+      // some other error happened
+      console.log(error);
+    }
+  }
+};
+
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+   
+        <View style={styles.container}>
+         
+        <GoogleSigninButton
+    style={{ width: 200, height: 48,}}
+    size={GoogleSigninButton.Size.Wide}
+    color={GoogleSigninButton.Color.Dark}
+    onPress={googleLogin}/>
+       
         </View>
-      </ScrollView>
-    </SafeAreaView>
+   
   );
 };
 
 const styles = StyleSheet.create({
+  container:{
+flex:1,
+justifyContent:'center',
+alignItems:'center',
+backgroundColor:'#fff',
+borderRadius:10,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,

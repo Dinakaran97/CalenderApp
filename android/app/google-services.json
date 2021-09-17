@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "168511955267",
+    "project_id": "calenderapp--signin",
+    "storage_bucket": "calenderapp--signin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168511955267:android:ccf1326a2614d0d2bc4ff6",
+        "android_client_info": {
+          "package_name": "com.calenderapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168511955267-4c38d5rlvihmp8rgq5fcebc3q052829c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.calenderapp",
+            "certificate_hash": "e47c98509c7cf35fff9cde692ce85923bc837c87"
+          }
+        },
+        {
+          "client_id": "168511955267-kpmrrcseqc3hete879jb7me5j3rgaeta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLpEMgi7SmUtFFkTpk73PlBrDslgSPc_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168511955267-kpmrrcseqc3hete879jb7me5j3rgaeta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
