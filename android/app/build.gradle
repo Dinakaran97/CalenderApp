@@ -80,6 +80,25 @@ import com.android.build.OutputFile
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
 ]
+project.ext {
+  set('react-native', [
+    versions: [
+      // Overriding Build/Android SDK Versions
+      android : [
+        minSdk    : 16,
+        targetSdk : 30,
+        compileSdk: 30,
+        buildTools: "30.0.2"
+      ],
+
+      // Overriding Library SDK Versions
+      firebase: [
+        // Override Firebase SDK Version
+        bom           : "28.3.1"
+      ],
+    ],
+  ])
+}
 
 apply from: "../../node_modules/react-native/react.gradle"
 

@@ -9,7 +9,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import SplashScreen from 'react-native-splash-screen'
+//import SplashScreen from 'react-native-splash-screen'
 import { GoogleSignin, statusCodes,GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
 const App: () => Node = () => {
